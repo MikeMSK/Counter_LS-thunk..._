@@ -1,5 +1,4 @@
-import {Dispatch} from "redux";
-import {AppStateType} from "./store";
+
 
 const initialState = {
     value: 0
@@ -34,17 +33,17 @@ export type IncValueActionType = ReturnType<typeof incValueAC>
 export type SetValuesFromLocalStorageActionType = ReturnType<typeof setValuesFromLocalStorageAC>
 
 //thunk
-export const incValuesTC = () => (dispath: Dispatch, getState: () => AppStateType) => {
-    let currentValue = getState().counter.value
-    localStorage.setItem("counterValue", JSON.stringify(currentValue + 1))
-    dispath(incValueAC())
-}
-export const setValueFromLocalStorageTC = () => (dispath: Dispatch) => {
-    let valueAsString = localStorage.getItem("counterValue")
-    if (valueAsString) {
-        let newValue = JSON.parse(valueAsString)
-        dispath(setValuesFromLocalStorageAC(newValue))
-    }
-}
+// export const incValuesTC = () => (dispath: Dispatch, getState: () => AppStateType) => {
+//     let currentValue = getState().counter.value
+//     localStorage.setItem("counterValue", JSON.stringify(currentValue + 1))
+//     dispath(incValueAC())
+// }
+// export const setValueFromLocalStorageTC = () => (dispath: Dispatch) => {
+//     let valueAsString = localStorage.getItem("counterValue")
+//     if (valueAsString) {
+//         let newValue = JSON.parse(valueAsString)
+//         dispath(setValuesFromLocalStorageAC(newValue))
+//     }
+// }
 
 export type ActionType = IncValueActionType | SetValuesFromLocalStorageActionType
